@@ -1,0 +1,4 @@
+clarifai==9.6.0
+Flask
+scikit-learn
+joblib
