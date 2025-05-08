@@ -1,0 +1,24 @@
+# train_model.py
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+
+# Example dataset
+data = pd.DataFrame({
+    'ph': [7.2, 6.8, 8.1, 7.4, 5.6],
+    'tds': [300, 280, 220, 330, 400],
+    'turbidity': [1.2, 1.0, 0.9, 1.5, 2.0],
+    'temperature': [27, 26, 28, 25, 30],
+    'label': ['Good', 'Good', 'Excellent', 'Poor', 'Hazardous']
+})
+
+# Train model
+X = data[['ph', 'tds', 'turbidity', 'temperature']]
+y = data['label']
+model = RandomForestClassifier()
+model.fit(X, y)
+# Save model
+joblib.dump(model, 'model/water_quality_model.pkl')
+print("✅ Model trained and saved!")
+
+
